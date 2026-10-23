@@ -1,0 +1,28 @@
+[job]
+id = "subscription-costs"
+scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
+start_date = "2026-10-01"
+metric = "ActualCost"
+lag_days = 3
+
+[azure]
+subscription_id = "00000000-0000-0000-0000-000000000000"
+resource_group = "gotomoch"
+location = "westeurope"
+storage_account = "replacewithuniquename"
+workspace = "gotomoch-logs"
+dcr = "gotomoch-costs"
+table = "AzureCosts_CL"
+provision = true
+
+[target]
+mode = "direct"
+
+[aggregation]
+dimensions = ["SubscriptionId", "ConsumedService"]
+
+[limits]
+chunk_rows = 5000
+chunk_bytes = 8000000
+batch_bytes = 900000
+concurrency = 4
