@@ -1,0 +1,6 @@
+Date,CostInBillingCurrency,BillingCurrencyCode,SubscriptionId,ConsumedService,ResourceId
+2026-10-01,0.10,USD,subscription-a,Microsoft.Compute,/vm/one
+2026-10-01,0.20,USD,subscription-a,Microsoft.Compute,/vm/two
+2026-10-01,-0.05,USD,subscription-a,Microsoft.Compute,/vm/credit
+2026-10-01,1.25,USD,subscription-a,Microsoft.Storage,/storage/one
+2026-10-01,2.50,EUR,subscription-a,Microsoft.Compute,/vm/three

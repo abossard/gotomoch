@@ -1,0 +1,34 @@
+[job]
+id = "subscription-costs-buffered"
+scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
+start_date = "2026-10-01"
+metric = "ActualCost"
+lag_days = 3
+
+[azure]
+subscription_id = "00000000-0000-0000-0000-000000000000"
+resource_group = "gotomoch"
+location = "westeurope"
+storage_account = "replacewithuniquename"
+workspace = "gotomoch-commitment-logs"
+dcr = "gotomoch-buffered-costs"
+table = "AzureCosts_CL"
+provision = true
+# An existing commitment-tier/dedicated-cluster workspace is required unless you
+# explicitly enable a PAID daily commitment for a new workspace:
+# workspace_capacity_gb = 100
+
+[target]
+mode = "event-hub"
+namespace = "replace-with-unique-events"
+hub = "costs"
+consumer_group = "gotomoch"
+
+[aggregation]
+dimensions = ["SubscriptionId", "ConsumedService"]
+
+[limits]
+chunk_rows = 5000
+chunk_bytes = 8000000
+batch_bytes = 900000
+concurrency = 4
